@@ -1,4 +1,5 @@
-import Taro, { useState } from '@tarojs/taro' // 导入 Taro 和 useState
+import { useState } from 'react' //导入useState
+import Taro from '@tarojs/taro' //导入 Taro
 import { View, Text, Input, Button } from '@tarojs/components' // 导入 View、Text、Input 和 Button 组件
 
 function SalaryPage() {
@@ -12,22 +13,23 @@ function SalaryPage() {
   // 发送请求并更新男女支出状态
   const calculateExpense = () => {
     Taro.request({
-      url: 'http://your-backend-url.com/calculate_expense', // 后端接口地址
+      url: 'http://127.0.0.1:5000/calculate_expense', // 后端接口地址
       method: 'POST',
       data: {
-        male_salary: maleSalary, // 发送男工资
-        female_salary: femaleSalary, // 发送女工资
-        fixed_expense: totalExpense // 发送支出总额
+      male_salary: maleSalary, // 发送男工资
+      female_salary: femaleSalary, // 发送女工资
+      fixed_expense: totalExpense // 发送支出总额
       },
       success: res => {
-        setMaleExpense(res.data.male_expense) // 更新男支出状态
-        setFemaleExpense(res.data.female_expense) // 更新女支出状态
+      setMaleExpense(res.data.male_expense) // 更新男支出状态
+      setFemaleExpense(res.data.female_expense) // 更新女支出状态
       },
       fail: err => {
-        console.log(err) // 打印错误信息
+      console.log(err) // 打印错误信息
       }
     })
   }
+  // 发送请求并更新男女支出状态
 
   return (
     <View>
